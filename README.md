@@ -106,11 +106,13 @@ Change directory to `frontend`.
 cd frontend
 ```
 
-The following assumes running on the `macos` desktop.
+The following assumes running on the `macos` desktop. See Flutter docs for
+building for Windows or Linux desktops.
 
 ### Backend running on local machine
 
 ```shell
+flutter config --enable-macos-desktop
 flutter run -d macos
 ```
 

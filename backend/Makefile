@@ -5,6 +5,7 @@ PORT = 8080
 
 # bin/server.dart is the generated target for lib/functions.dart
 bin/server.dart: lib/functions.dart
+	dart pub get
 	dart run build_runner build --delete-conflicting-outputs
 
 build: bin/server.dart
@@ -13,7 +14,6 @@ test: clean build
 	dart test
 
 clean:
-	dart run build_runner clean
 	rm -rf bin/server.dart
 
 run: build
