@@ -124,26 +124,21 @@ You may need to restart any open editors for them to read new settings.
 ```
 
 ### Connect frontend to backend running on local machine
-
 ```shell
 flutter run -d macos
-```
-
-You can use the following command if you want to be explicit about
-using the `dev` configuration:
-
-```shell
-flutter run -d macos -t lib/main_dev.dart
 ```
 
 ### Connect frontend to backend running on Cloud Run
 
 For this demo, the `prod` configuration points to `backend`
-running on Cloud Run:
+running on Cloud Run.
+
+First update your `prod` configuration with your Cloud Run project's URL in `frontend/assets/config/prod.json`
+
+Then when running `flutter run` define our environment as `prod`:
 
 ```shell
-export GREETING_URL={Cloud Run service URL}
-flutter run -d macos -t lib/main_prod.dart
+flutter run -d macos --dart-define=ENV=prod
 ```
 
 ### Try it out!

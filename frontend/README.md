@@ -10,25 +10,14 @@ demo.
 
 Configuration for `dev` and `prod` environments is stored under `assets/config`.
 
-The configuration is set by launching either `lib/main_dev.dart` or
-`lib/main_prod.dart`.
-
-For example:
-
+By default running `flutter run` will use `dev`:
 ```shell
-flutter run -d macos -t lib/main_prod.dart
+flutter run -d macos
 ```
 
-> NOTE:
-Currently, this does not work, so `lib/main.dart` implements a hack. If you
-run the `prod` target, you must also set a `GREETING_URL` environment variable
-to point to the service URL.
-> 
-> For example:
-
+To use `prod` specify your environment when running `flutter run`:
 ```shell
-export GREETING_URL=https://greetings-ebudtvnqna-uc.a.run.app
-flutter run -d macos -t lib/main_prod.dart
+flutter run -d macos --dart-define=ENV=prod
 ```
 
 ### Calling the backend API
