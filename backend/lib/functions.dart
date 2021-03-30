@@ -40,6 +40,7 @@ List<String> salutations = [
   'Bonjour',
   'Hello',
   'Ciao',
+  'Dzień dobry',
   'Hola',
   'Hallo',
   'Kon’nichiwa',
