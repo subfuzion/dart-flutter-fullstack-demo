@@ -109,28 +109,44 @@ cd frontend
 The following assumes running on the `macos` desktop. See Flutter docs for
 building for Windows or Linux desktops.
 
-### Backend running on local machine
+If you have not enabled desktop support for your Flutter installation,
+do so now:
 
 ```shell
 flutter config --enable-macos-desktop
+```
+
+Output:
+```shell
+Setting "enable-macos-desktop" value to "true".
+
+You may need to restart any open editors for them to read new settings.
+```
+
+### Connect frontend to backend running on local machine
+
+```shell
 flutter run -d macos
 ```
 
-or
+You can use the following command if you want to be explicit about
+using the `dev` configuration:
 
 ```shell
 flutter run -d macos -t lib/main_dev.dart
 ```
 
-### Backend running on Cloud Run
+### Connect frontend to backend running on Cloud Run
 
+For this demo, the `prod` configuration points to `backend`
+running on Cloud Run:
 
 ```shell
 export GREETING_URL={Cloud Run service URL}
 flutter run -d macos -t lib/main_prod.dart
 ```
 
-### Trying it out
+### Try it out!
 
 ![flutter_demo.png](images/flutter_demo.png)
 
