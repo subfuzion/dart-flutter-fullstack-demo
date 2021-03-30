@@ -21,28 +21,10 @@ import 'config.dart';
 import 'models/app_model.dart';
 import 'views/home_page.dart';
 
-void main({String? environment}) async {
-  // FIXME: Unhandled Exception: Null check operator used on a null value
-  // Fails to load asset
-  // final config = await Config.parse(environment);
-
-  // TODO: replace following hack when preceding exception is resolved
-  // HACK ==>
-
-  String? greetingUrl = environment == 'prod'
-      ? Platform.environment['GREETING_URL']
-      : 'http://localhost:8080';
-
-  if (greetingUrl == null) {
-    throw Exception(
-        'Error: environment variable GREETING_URL not set for prod environment.');
-  }
-
-  final config = Config(
-      greetingsUrl:
-          environment == 'prod' ? greetingUrl : 'http://localhost:8080');
-
-  // <== HACK
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  const env = String.fromEnvironment('ENV');
+  final config = await Config.parse(env);
 
   runApp(
     ChangeNotifierProvider(
