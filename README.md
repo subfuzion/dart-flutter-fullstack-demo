@@ -40,7 +40,7 @@ make run
 ```
 
 Output:
-```shell
+```
 Listening on :8080
 ```
 
@@ -60,7 +60,7 @@ gcloud beta run deploy greeting --allow-unauthenticated --source=.
 ```
 
 Output:
-```shell
+```
 Building using Dockerfile and deploying container to Cloud Run service [greeting] in project [dart-demo] region [us-central1]
 ✓ Building and deploying new service... Done.
   ✓ Uploading sources...
@@ -93,7 +93,7 @@ curl -X POST -H "content-type: application/json" -d '{ "name": "World" }' -w "\n
 ````
 
 Output (example):
-```shell
+```
 {"salutation":"Hello","name":"World"}
 ```
 
@@ -117,7 +117,7 @@ flutter config --enable-macos-desktop
 ```
 
 Output:
-```shell
+```
 Setting "enable-macos-desktop" value to "true".
 
 You may need to restart any open editors for them to read new settings.
