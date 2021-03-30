@@ -52,8 +52,8 @@ class Config {
     return Config(greetingsUrl: json['greetingUrl']);
   }
 
-  static Future<Config> parse(String? environment) async {
-    final Environment env = environment?.parseEnvironment() ?? Environment.dev;
+  static Future<Config> parse(String environment) async {
+    final Environment env = environment.parseEnvironment();
     return await load(env);
   }
 }

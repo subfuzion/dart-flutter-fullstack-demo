@@ -23,7 +23,7 @@ import 'views/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  const env = String.fromEnvironment('ENV');
+  const env = String.fromEnvironment('ENV', defaultValue: 'dev');
   final config = await Config.parse(env);
 
   runApp(
