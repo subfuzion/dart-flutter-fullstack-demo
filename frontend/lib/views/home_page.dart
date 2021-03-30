@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'greeting.dart';
+import 'history_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -34,18 +35,33 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: ListView(padding: EdgeInsets.zero, children: [
-      ListTile(
-        trailing: Icon(
-          Icons.chevron_left,
-          size: 34,
-        ),
-        onTap: () => Navigator.pop(context),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          ListTile(
+            trailing: Icon(
+              Icons.chevron_left,
+              size: 34,
+            ),
+            onTap: () => Navigator.pop(context),
+          ),
+          ListTile(
+            leading: Icon(Icons.history),
+            title: Text('History'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => HistoryPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+          ),
+        ],
       ),
-      ListTile(
-        leading: Icon(Icons.settings),
-        title: Text('Settings'),
-      ),
-    ]));
+    );
   }
 }

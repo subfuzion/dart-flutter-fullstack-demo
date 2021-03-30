@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:fullstack_demo_frontend/services/api_types.dart';
 
 import '../config.dart';
 import '../services/api.dart';
@@ -24,6 +25,8 @@ class AppModel with ChangeNotifier {
   String? name;
   String? salutation;
 
+  List<GreetingResponse> pastGreetings = [];
+
   AppModel(this._config) {
     _greeting = Greeting(_config.greetingsUrl);
   }
@@ -31,6 +34,7 @@ class AppModel with ChangeNotifier {
   Future<void> greet(String? name) async {
     try {
       var greetingResponse = await _greeting.getGreeting(name);
+      pastGreetings.add(greetingResponse);
       this.name = greetingResponse.name;
       this.salutation = greetingResponse.salutation;
       notifyListeners();
