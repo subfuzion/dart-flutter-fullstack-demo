@@ -130,12 +130,10 @@ flutter run -d macos -t lib/main_prod.dart
 
 ### Trying it out
 
-![flutter_demo.png]
+![flutter_demo.png](images/flutter_demo.png)
 
 
-
-
-
+<!-- reference links -->
 
 [backend/README]:
 ./backend/README.md
@@ -145,9 +143,6 @@ https://cloud.google.com/run
 
 [Dart]:
 https://dart.dev
-
-[flutter_demo.png]:
-./images/flutter_demo.png
 
 [Google Cloud]:
 https://cloud.google.com/
