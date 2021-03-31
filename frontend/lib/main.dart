@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +19,7 @@ import 'config.dart';
 import 'models/app_model.dart';
 import 'views/home_page.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   const env = String.fromEnvironment('ENV', defaultValue: 'dev');
   final config = await Config.parse(env);
@@ -36,10 +34,8 @@ void main() async {
 
 class App extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: HomePage(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        theme: ThemeData.dark(),
+        home: HomePage(),
+      );
 }

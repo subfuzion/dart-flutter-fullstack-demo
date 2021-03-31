@@ -1,4 +1,12 @@
-# Dart / Flutter - full stack demo for Cloud Run
+> NOTE
+> 
+> This repo has been merged under the main [Functions Framework for Dart] repo under examples:
+> https://github.com/GoogleCloudPlatform/functions-framework-dart/tree/main/examples/fullstack
+> 
+> To make it a bit easier to iterate on th demo, this repo will be maintained for a little
+> while longer before it gets archived.
+
+# Full stack demo with Flutter and Cloud Run
 
 This is a demo of a full stack application built with [Dart] and [Flutter].
 
@@ -7,13 +15,15 @@ the backend and then displays the response (a greeting in various languages) in
 a snackbar (an ephemeral popup widget for displaying messages at the bottom of
 the page).
 
-
 The **backend** is a Dart function app that was generated using the
 [Functions Framework for Dart]. It serves an HTTP endpoint that accepts a
 JSON-encoded request body and returns a JSON-encoded response body. For the
 demo, the function is hosted on `localhost` and on [Cloud Run], a fully
 managed serverless platform on [Google Cloud].
 
+## Requirements
+
+- Dart: >=2.12.0 <3.0.0
 
 ## Build and deploy the backend
 
@@ -22,7 +32,6 @@ Change directory to `backend`.
 ```shell
 cd backend
 ```
-
 
 ### Local machine
 
@@ -40,12 +49,12 @@ make run
 ```
 
 Output:
-```
+
+```text
 Listening on :8080
 ```
 
 For more details see [backend/README].
-
 
 ### Cloud Run
 
@@ -60,7 +69,8 @@ gcloud beta run deploy greeting --allow-unauthenticated --source=.
 ```
 
 Output:
-```
+
+```text
 Building using Dockerfile and deploying container to Cloud Run service [greeting] in project [dart-demo] region [us-central1]
 ✓ Building and deploying new service... Done.
   ✓ Uploading sources...
@@ -77,15 +87,12 @@ Service URL: https://greeting-gpua4upw6q-uc.a.run.app
 
 The function app endpoint is the Service URL printed on the last line.
 
-
-See [Quickstart: Cloud Run] for details on setting up and using a Google 
+See [Quickstart: Cloud Run] for details on setting up and using a Google
 Cloud project.
-
 
 ### Verify the backend works
 
 If you have `curl` installed on your system, you can enter the following:
-
 
 ```shell
 URL=http://localhost:8080  # or your Cloud Run service URL
@@ -93,10 +100,10 @@ curl -X POST -H "content-type: application/json" -d '{ "name": "World" }' -w "\n
 ````
 
 Output (example):
-```
+
+```text
 {"salutation":"Hello","name":"World"}
 ```
-
 
 ## Build and run the frontend
 
@@ -110,22 +117,28 @@ The following assumes running on the macOS desktop. See Flutter docs for
 building for Windows or Linux desktops.
 
 If you have not enabled desktop support for your Flutter installation,
-do so now:
+do so now with one of the following commands, as appropriate for your system:
 
 ```shell
+flutter config --enable-windows-desktop
 flutter config --enable-macos-desktop
+flutter config --enable-linux-desktop
 ```
 
 Output:
-```
-Setting "enable-macos-desktop" value to "true".
+
+```text
+Setting "enable-{DESKTOP}-desktop" value to "true".
 
 You may need to restart any open editors for them to read new settings.
 ```
 
 ### Connect frontend to backend running on local machine
+
+Replace {DESKTOP} with `windows`, `macos`, or `linux`.
+
 ```shell
-flutter run -d macos
+flutter run -d {DESKTOP}
 ```
 
 ### Connect frontend to backend running on Cloud Run
@@ -133,18 +146,21 @@ flutter run -d macos
 For this demo, the `prod` configuration points to `backend`
 running on Cloud Run.
 
-First update your `prod` configuration with your Cloud Run project's URL in `frontend/assets/config/prod.json`
+First update your `prod` configuration with your Cloud Run project's
+ServiceURL in `frontend/assets/config/prod.json` (note that this file
+is in `frontend/.gitignore`; if you want to commit your change you
+will need to remove or comment out the entry).
 
-Then when running `flutter run` define our environment as `prod`:
+Then when running `flutter run` define our environment as `prod` and
+replace {DESKTOP} with `windows`, `macos`, or `linux`:
 
 ```shell
-flutter run -d macos --dart-define=ENV=prod
+flutter run -d {DESKTOP} --dart-define=ENV=prod
 ```
 
-### Try it out!
+### Try it out
 
 ![flutter_demo.png](images/flutter_demo.png)
-
 
 <!-- reference links -->
 
