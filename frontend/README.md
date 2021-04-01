@@ -3,9 +3,6 @@
 This is a Flutter desktop app that provides the frontend for the Dart full-stack
 demo.
 
-> NOTE: The desktop app currently has only been tested on macOS. Testing on
-> Linux or Windows and help with updating docs is appreciated!
-
 ## Requirements
 
 - [Flutter](https://flutter.dev/docs/get-started/install)
@@ -80,4 +77,3 @@ Output:
 > Note: the JSON serializer code is maintained separately from the code in the
 > backend. Tightly coupling client and server code through shared libraries
 > (packages) is considered an anti-pattern with microservice architecture.
-
